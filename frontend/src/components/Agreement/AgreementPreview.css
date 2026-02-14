@@ -1,0 +1,155 @@
+/* AgreementPreview.css */
+
+.agreement-preview-container {
+    width: 100%;
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.preview-title {
+    margin-bottom: 2rem;
+    color: #333;
+}
+
+/* Layout Grids */
+.preview-grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.form-group {
+    margin-bottom: 24px;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    .preview-grid-3 {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Labels and Inputs */
+.field-label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #333333;
+}
+
+.field-value {
+    padding: 8px 12px;
+    background-color: #E2E2E2;
+    border-radius: 4px;
+    font-size: 14px;
+    min-height: 20px;
+    /* Ensures empty fields still have height */
+    color: #333;
+}
+
+.field-value em {
+    color: #666;
+    font-style: italic;
+}
+
+/* Links */
+.preview-link {
+    color: #008fd5;
+    text-decoration: underline;
+}
+
+.preview-link:hover {
+    text-decoration: none;
+}
+
+/* Remarks specific style */
+.field-value.remarks-box {
+    min-height: 100px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+/* Tag Containers (Users) */
+.tags-container {
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+/* Individual Tags */
+.user-tag {
+    background-color: #F3F3F3;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 13px;
+    display: inline-flex;
+    align-items: center;
+}
+
+.user-tag.executive {
+    background-color: rgba(213, 170, 0, 0.1);
+    /* #D5AA001A converted to rgba */
+    color: #5a4a00;
+}
+
+.tag-remove {
+    margin-left: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    opacity: 0.6;
+}
+
+.tag-remove:hover {
+    opacity: 1;
+}
+
+/* Buttons */
+.button-group {
+    display: flex;
+    gap: 12px;
+    margin-top: 32px;
+}
+
+.btn {
+    padding: 10px 24px;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: 1px solid transparent;
+}
+
+.btn-primary {
+    background-color: #2c3e50;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #1a252f;
+}
+
+.btn-primary:disabled {
+    background-color: #95a5a6;
+    cursor: not-allowed;
+}
+
+.btn-secondary {
+    background-color: #fff;
+    color: #333333;
+    border: 1px solid #ddd;
+}
+
+.btn-secondary:hover {
+    background-color: #f8f9fa;
+    border-color: #ccc;
+}
+

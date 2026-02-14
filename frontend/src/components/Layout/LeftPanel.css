@@ -1,0 +1,161 @@
+/* Sidebar Container */
+.left-panel {
+  width: 260px;
+  background: #ffffff;
+  height: 100vh;
+  border-right: 1px solid #f0f0f0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Sidebar Header */
+.menu-header {
+  padding: 24px 24px 12px;
+  color: #b0b0b0;
+  font-size: 16px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  flex-shrink: 0;
+}
+
+nav {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbar */
+nav::-webkit-scrollbar {
+  width: 6px;
+}
+
+nav::-webkit-scrollbar-track {
+  background: #f5f5f5;
+}
+
+nav::-webkit-scrollbar-thumb {
+  background: #d0d0d0;
+  border-radius: 3px;
+}
+
+nav::-webkit-scrollbar-thumb:hover {
+  background: #b0b0b0;
+}
+
+.nav-list {
+  padding: 0 12px;
+  list-style: none;
+}
+
+/* Base Link Style (Inactive) */
+.nav-link, 
+.parent-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  text-decoration: none;
+  color: #444;
+  border-radius: 12px;
+  margin-bottom: 4px;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.link-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  transition: all 0.3s ease;
+  opacity: 0.8;
+}
+
+.chevron-icon {
+  font-size: 12px;
+  color: #c0c0c0;
+  transition: transform 0.3s ease;
+}
+
+/* --- THE GLOW-UP (ACTIVE STATES) --- */
+
+.active-link, 
+.parent-active {
+  color: #008FD5 !important;
+}
+
+.active-link .icon, 
+.parent-active .icon {
+  opacity: 1;
+  filter: invert(41%) sepia(97%) saturate(1915%) hue-rotate(176deg) brightness(92%) contrast(101%);
+}
+
+.active-link span, 
+.parent-active span {
+  font-weight: 600;
+}
+
+.active-link .chevron-icon, 
+.parent-active .chevron-icon {
+  color: #008FD5;
+}
+
+/* --- SUBMENU STYLING --- */
+
+/* level-0: First nesting level (e.g., Accounts under Configurations) */
+.submenu-list.level-0 {
+  list-style: none;
+  padding: 4px 0 8px 48px; /* Standard indentation to align text */
+}
+
+/* level-1: Second nesting level (e.g., Departments under Accounts) */
+.submenu-list.level-1 {
+  padding-left: 8px; /* The additional 2-space (16px) indentation */
+}
+
+.sub-link {
+  display: block;
+  padding: 8px 0;
+  color: #888;
+  font-size: 14px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+/* Active Sub-Link Glow (Pill Shape) */
+.active-sub-link {
+  display: block;
+  padding: 8px 16px;
+  margin-left: -16px; /* Keeps the text anchor point stable while adding the background */
+  background-color: #f0f9ff;
+  color: #008FD5;
+  font-weight: 600;
+  border-radius: 20px;
+  text-decoration: none;
+}
+
+/* Sub-parent trigger style adjustments (e.g., the word "Accounts" when inside Configurations) */
+.parent-trigger.level-1 {
+  padding: 8px 0;
+  font-size: 14px;
+  color: #888;
+  margin-bottom: 0;
+}
+
+/* Close Button */
+.close-sidebar-btn {
+  display: none; 
+}
+
+@media (max-width: 768px) {
+  .close-sidebar-btn {
+    display: block;
+  }
+}

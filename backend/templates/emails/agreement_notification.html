@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Agreement Notification</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+        .agreement-details { margin: 20px 0; padding: 15px; background-color: #f8f9fa; border-radius: 5px; border-left: 4px solid #007bff; }
+        .detail-item { margin-bottom: 10px; }
+        .detail-label { font-weight: bold; color: #495057; }
+        .highlight { color: #007bff; font-weight: bold; }
+        .urgent { color: #dc3545; font-weight: bold; }
+        .footer { margin-top: 20px; padding-top: 15px; border-top: 1px solid #dee2e6; color: #6c757d; }
+        .recipient-info { background-color: #e9ecef; padding: 10px; border-radius: 3px; margin-bottom: 15px; }
+    </style>
+</head>
+<body>
+    {% if action == 'created' %}
+    <p>Hello {{ recipient_name }},</p>
+    
+    <div class="recipient-info">
+        <small>You are receiving this notification because you are: 
+            {% if is_assigned_user %}assigned to this agreement{% endif %}
+            {% if is_creator %}{% if is_assigned_user %} and {% endif %}the creator{% endif %}
+            {% if is_department_user %}{% if is_assigned_user or is_creator %} and {% endif %}in the same department{% endif %}
+            {% if is_permission_user %}{% if is_assigned_user or is_creator or is_department_user %} and {% endif %}have department permissions{% endif %}
+            {% if is_executive_user %}{% if is_assigned_user or is_creator or is_department_user or is_permission_user %} and {% endif %}an executive user{% endif %}
+        </small>
+    </div>
+    
+    <p>A new agreement <b>"{{ agreement.title }}"</b> has been created with {{ agreement.party_name.name }}.</p>
+    <div class="agreement-details">
+        <div class="detail-item">
+            <span class="detail-label">Agreement ID:</span> {{ agreement.agreement_id }}
+        </div>
+        <div class="detail-item">
+            <span class="detail-label">Agreement Reference:</span> {{ agreement.agreement_reference|default:"N/A" }}
+        </div>
+        <div class="detail-item">
+            <span class="detail-label">Department:</span> {{ agreement.department.name|default:"N/A" }}
+        </div>
+        <div class="detail-item">
+            <span class="detail-label">Agreement Type:</span> {{ agreement.agreement_type.name|default:"N/A" }}
+        </div>
+        <div class="detail-item">
+            <span class="detail-label">Start Date:</span> {{ agreement.start_date }}
+        </div>
+        <div class="detail-item">
+            <span class="detail-label">Expiry Date:</span> {{ agreement.expiry_date }}
+        </div>
+        <div class="detail-item">
+            <span class="detail-label">Days Remaining:</span> <span class="highlight">{{ days_remaining }}</span>
+        </div>
+    </div>
+    <p>Please review the agreement details and take necessary action.</p>
+    
+    {% elif action == 'updated' %}
+    <p>Hello {{ recipient_name }},</p>
+    
+    <div class="recipient-info">
+        <small>You are receiving this notification because you are: 
+            {% if is_assigned_user %}assigned to this agreement{% endif %}
+            {% if is_creator %}{% if is_assigned_user %} and {% endif %}the creator{% endif %}
+            {% if is_department_user %}{% if is_assigned_user or is_creator %} and {% endif %}in the same department{% endif %}
+            {% if is_permission_user %}{% if is_assigned_user or is_creator or is_department_user %} and {% endif %}have department permissions{% endif %}
+            {% if is_executive_user %}{% if is_assigned_user or is_creator or is_department_user or is_permission_user %} and {% endif %}an executive user{% endif %}
+        </small>
+    </div>
+    
+    <p>The agreement <b>"{{ agreement.title }}"</b> with {{ agreement.party_name.name }} has been updated.</p>
+    <div class="agreement-details">
+        <div class="detail-item">
+            <span class="detail-label">Agreement ID:</span> {{ agreement.agreement_id }}
+        </div>
+        <div class="detail-item">
+            <span class="detail-label">Agreement Reference:</span> {{ agreement.agreement_reference|default:"N/A" }}
+        </div>
+        <div class="detail-item">
+            <span class="detail-label">Department:</span> {{ agreement.department.name|default:"N/A" }}
+        </div>
+        <div class="agreement-details">
+            <span class="detail-label">Updated Fields:</span> {{ updated_fields|default:"Various fields have been updated" }}
+        </div>
+        <div class="detail-item">
+            <span class="detail-label">Current Status:</span> {{ agreement.status }}
+        </div>
+        <div class="detail-item">
+            <span class="detail-label">Expiry Date:</span> {{ agreement.expiry_date }}
+        </div>
+        <div class="detail-item">
+            <span class="detail-label">Days Remaining:</span> <span class="highlight">{{ days_remaining }}</span>
+        </div>
+    </div>
+    <p>Please review the changes and ensure they align with your expectations.</p>
+    
+    {% elif action == 'expired' %}
+    <p>Hello {{ recipient_name }},</p>
+    
+    <div class="recipient-info">
+        <small>You are receiving this notification because you are: 
+            {% if is_assigned_user %}assigned to this agreement{% endif %}
+            {% if is_creator %}{% if is_assigned_user %} and {% endif %}the creator{% endif %}
+            {% if is_department_user %}{% if is_assigned_user or is_creator %} and {% endif %}in the same department{% endif %}
+            {% if is_permission_user %}{% if is_assigned_user or is_creator or is_department_user %} and {% endif %}have department permissions{% endif %}
+            {% if is_executive_user %}{% if is_assigned_user or is_creator or is_department_user or is_permission_user %} and {% endif %}an executive user{% endif %}
+        </small>
+    </div>
+    
+    <p>The agreement <b>"{{ agreement.title }}"</b> with {{ agreement.party_name.name }} has <span class="urgent">EXPIRED</span>.</p>
+    <div class="agreement-details">
+        <div class="detail-item">
+            <span class="detail-label">Agreement ID:</span> {{ agreement.agreement_id }}
+        </div>
+        <div class="detail-item">
+            <span class="detail-label">Agreement Reference:</span> {{ agreement.agreement_reference|default:"N/A" }}
+        </div>
+        <div class="detail-item">
+            <span class="detail-label">Department:</span> {{ agreement.department.name|default:"N/A" }}
+        </div>
+        <div class="detail-item">
+            <span class="detail-label">Original Start Date:</span> {{ agreement.start_date }}
+        </div>
+        <div class="detail-item">
+            <span class="detail-label">Expiry Date:</span> {{ agreement.expiry_date }}
+        </div>
+        <div class="detail-item">
+            <span class="detail-label">Current Status:</span> <span class="urgent">{{ agreement.status }}</span>
+        </div>
+    </div>
+    <p><strong>Immediate action required:</strong> Please review this expired agreement and take necessary steps.</p>
+    
+    {% elif reminder_type %}
+    <p>Hello {{ recipient_name }},</p>
+    
+    <div class="recipient-info">
+        <small>You are receiving this notification because you are: 
+            {% if is_assigned_user %}assigned to this agreement{% endif %}
+            {% if is_creator %}{% if is_assigned_user %} and {% endif %}the creator{% endif %}
+            {% if is_department_user %}{% if is_assigned_user or is_creator %} and {% endif %}in the same department{% endif %}
+            {% if is_permission_user %}{% if is_assigned_user or is_creator or is_department_user %} and {% endif %}have department permissions{% endif %}
+            {% if is_executive_user %}{% if is_assigned_user or is_creator or is_department_user or is_permission_user %} and {% endif %}an executive user{% endif %}
+        </small>
+    </div>
+    
+    <p>This is a reminder for the agreement <b>"{{ agreement.title }}"</b> with {{ agreement.party_name.name }}.</p>
+    <div class="agreement-details">
+        <div class="detail-item">
+            <span class="detail-label">Agreement ID:</span> {{ agreement.agreement_id }}
+        </div>
+        <div class="detail-item">
+            <span class="detail-label">Agreement Reference:</span> {{ agreement.agreement_reference|default:"N/A" }}
+        </div>
+        <div class="detail-item">
+            <span class="detail-label">Department:</span> {{ agreement.department.name|default:"N/A" }}
+        </div>
+        <div class="detail-item">
+            <span class="detail-label">Start Date:</span> {{ agreement.start_date }}
+        </div>
+        <div class="detail-item">
+            <span class="detail-label">Expiry Date:</span> {{ agreement.expiry_date }}
+        </div>
+        <div class="detail-item">
+            <span class="detail-label">Reminder Type:</span> <span class="highlight">{{ reminder_type|title }} Expiry</span>
+        </div>
+        <div class="detail-item">
+            <span class="detail-label">Days Remaining:</span> 
+            {% if days_remaining > 0 %}
+                <span class="highlight">{{ days_remaining }} days</span>
+            {% else %}
+                <span class="urgent">EXPIRED</span>
+            {% endif %}
+        </div>
+    </div>
+    <p>Please take necessary action before the agreement expires.</p>
+    
+    {% else %}
+    <p>Hello {{ recipient_name }},</p>
+    
+    <div class="recipient-info">
+        <small>You are receiving this notification because you are: 
+            {% if is_assigned_user %}assigned to this agreement{% endif %}
+            {% if is_creator %}{% if is_assigned_user %} and {% endif %}the creator{% endif %}
+            {% if is_department_user %}{% if is_assigned_user or is_creator %} and {% endif %}in the same department{% endif %}
+            {% if is_permission_user %}{% if is_assigned_user or is_creator or is_department_user %} and {% endif %}have department permissions{% endif %}
+            {% if is_executive_user %}{% if is_assigned_user or is_creator or is_department_user or is_permission_user %} and {% endif %}an executive user{% endif %}
+        </small>
+    </div>
+    
+    <p>There is an update regarding agreement <b>"{{ agreement.title }}"</b> with {{ agreement.party_name.name }}.</p>
+    <div class="agreement-details">
+        <div class="detail-item">
+            <span class="detail-label">Agreement ID:</span> {{ agreement.agreement_id }}
+        </div>
+        <div class="detail-item">
+            <span class="detail-label">Current Status:</span> {{ agreement.status }}
+        </div>
+        <div class="detail-item">
+            <span class="detail-label">Expiry Date:</span> {{ agreement.expiry_date }}
+        </div>
+        <div class="detail-item">
+            <span class="detail-label">Days Remaining:</span> <span class="highlight">{{ days_remaining }}</span>
+        </div>
+    </div>
+    <p>Please review the agreement details in the system.</p>
+    {% endif %}
+    
+    <div class="footer">
+        <p>If you have any questions or concerns, please don't hesitate to contact us.</p>
+        <p>
+            Best regards,<br>
+            {% if company_name %}{{ company_name }}{% else %}Sonali Intellect Limited©{% endif %}
+        </p>
+    </div>
+</body>
+</html> 

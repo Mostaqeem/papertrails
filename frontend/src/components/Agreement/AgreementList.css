@@ -1,0 +1,323 @@
+/* AgreementList.css */
+.agreement-list {
+  width: 100%;
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  box-sizing: border-box;
+}
+
+.agreement-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.agreement-list-title {
+  margin: 0;
+  text-align: center;
+  color: #374151;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.agreement-list-create-btn {
+  text-decoration: none;
+  border: none;
+  color: #fff;
+  background: #0b84cb;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 36px;
+}
+
+.agreement-list-create-btn:hover {
+  background: #0a73b3;
+}
+
+.agreement-list-search-container {
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  background: white;
+}
+
+.agreement-list-search-results {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding: 0.75rem 1rem;
+  background-color: #e3f2fd;
+  border-radius: 6px;
+  border: 1px solid #bbdefb;
+  font-size: 14px;
+  color: #374151;
+}
+
+.agreement-list-clear-search {
+  background: none;
+  border: none;
+  color: #0b84cb;
+  cursor: pointer;
+  text-decoration: underline;
+  font-size: 14px;
+  padding: 0;
+}
+
+.agreement-list-clear-search:hover {
+  color: #0a73b3;
+}
+
+.agreement-list-empty {
+  text-align: center;
+  padding: 2rem;
+  color: #6b7280;
+}
+
+.agreement-list-empty-btn {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background: #0b84cb;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  min-height: 36px;
+}
+
+.agreement-list-empty-btn:hover {
+  background: #0a73b3;
+}
+
+.agreement-list-empty-btn-secondary {
+  background: #6b7280;
+}
+
+.agreement-list-empty-btn-secondary:hover {
+  background: #4b5563;
+}
+
+.agreement-list-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  table-layout: fixed;
+}
+
+.agreement-list-table th {
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  color: #374151;
+  background-color: #f9fafb;
+  border-bottom: 2px solid #e5e7eb;
+  font-size: 14px;
+}
+
+.agreement-list-table td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 14px;
+  color: #374151;
+  word-wrap: break-word;
+}
+
+/* Column width adjustments to match the image */
+.agreement-list-table th:nth-child(1),
+.agreement-list-table td:nth-child(1) {
+  width: 15%;
+}
+
+.agreement-list-table th:nth-child(2),
+.agreement-list-table td:nth-child(2) {
+  width: 15%;
+}
+
+.agreement-list-table th:nth-child(3),
+.agreement-list-table td:nth-child(3) {
+  width: 15%;
+}
+
+.agreement-list-table th:nth-child(4),
+.agreement-list-table td:nth-child(4) {
+  width: 15%;
+}
+
+.agreement-list-table th:nth-child(5),
+.agreement-list-table td:nth-child(5) {
+  width: 15%;
+}
+
+.agreement-list-table th:nth-child(6),
+.agreement-list-table td:nth-child(6) {
+  width: 15%;
+}
+
+.agreement-list-table th:nth-child(7),
+.agreement-list-table td:nth-child(7) {
+  width: 10%;
+  text-align: center;
+}
+
+.agreement-list-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.agreement-list-action-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  color: #6b7280;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.agreement-list-action-btn:hover {
+  color: #0b84cb;
+  background-color: #f3f4f6;
+}
+
+/* View button with SVG icon */
+.agreement-list-view-btn {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z'%3E%3C/path%3E%3Ccircle cx='12' cy='12' r='3'%3E%3C/circle%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 18px;
+}
+
+.agreement-list-view-btn:hover {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%230b84cb' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z'%3E%3C/path%3E%3Ccircle cx='12' cy='12' r='3'%3E%3C/circle%3E%3C/svg%3E");
+}
+
+/* Edit button with SVG icon */
+.agreement-list-edit-btn {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7'%3E%3C/path%3E%3Cpath d='M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 18px;
+}
+
+.agreement-list-edit-btn:hover {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%2310b981' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7'%3E%3C/path%3E%3Cpath d='M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z'%3E%3C/path%3E%3C/svg%3E");
+  color: #10b981;
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+  .agreement-list {
+    padding: 1.5rem;
+    margin: 1rem auto;
+  }
+  
+  .agreement-list-table {
+    font-size: 13px;
+  }
+  
+  .agreement-list-table th,
+  .agreement-list-table td {
+    padding: 0.75rem 0.5rem;
+  }
+  
+  .agreement-list-action-btn {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .agreement-list-view-btn,
+  .agreement-list-edit-btn {
+    background-size: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .agreement-list {
+    padding: 1rem;
+    margin: 0.5rem auto;
+  }
+  
+  .agreement-list-header {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+  
+  .agreement-list-title {
+    font-size: 1.25rem;
+  }
+  
+  .agreement-list-table {
+    display: block;
+    overflow-x: auto;
+  }
+  
+  .agreement-list-table th,
+  .agreement-list-table td {
+    padding: 0.5rem;
+    font-size: 12px;
+  }
+  
+  .agreement-list-actions {
+    gap: 0.5rem;
+  }
+  
+  .agreement-list-action-btn {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .agreement-list-view-btn,
+  .agreement-list-edit-btn {
+    background-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .agreement-list {
+    padding: 0.5rem;
+    border-radius: 4px;
+  }
+  
+  .agreement-list-table {
+    font-size: 11px;
+  }
+  
+  .agreement-list-table th,
+  .agreement-list-table td {
+    padding: 0.25rem;
+  }
+  
+  .agreement-list-action-btn {
+    width: 22px;
+    height: 22px;
+    padding: 0.25rem;
+  }
+  
+  .agreement-list-view-btn,
+  .agreement-list-edit-btn {
+    background-size: 12px;
+  }
+}

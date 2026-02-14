@@ -1,0 +1,272 @@
+/* --- Form.css - Redesigned based on LetterForm style --- */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&display=swap");
+
+:root {
+  --primary-blue: #008fd5;
+  --primary-hover: #007bb5;
+  --border-color: #ced4da;
+  --input-bg: #ffffff;
+  --text-color: #212529;
+  --label-color: #6c757d;
+  --focus-ring: rgba(13, 110, 253, 0.25);
+  --radius-md: 6px;
+  --radius-sm: 4px;
+}
+
+/* --- Container & Layout --- */
+.form-container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 24px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: var(--text-color);
+}
+
+.form-header {
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.form-header h2 {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
+  color: var(--text-color);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+/* --- Typography --- */
+.form-group label {
+  font-size: 13px;
+  font-weight: 500;
+  /* Matches LetterForm label weight */
+  color: var(--text-color);
+  display: block;
+}
+
+/* --- Inputs & Textarea (The "Big Box" Fix) --- */
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="date"],
+.form-group input[type="number"],
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text-color);
+  background-color: var(--input-bg);
+  /* The specific gray border from LetterForm.css */
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  box-sizing: border-box;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  font-family: inherit;
+}
+
+/* Placeholder styling */
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #adb5bd;
+}
+
+/* Focus State - The Blue Ring */
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: 0;
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 0 0.2rem var(--focus-ring);
+}
+
+/* Specific styling for the Big Text Box (Textarea) */
+.form-group textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* --- Select Dropdown Arrow --- */
+.form-group select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 16px 12px;
+  padding-right: 2.5rem;
+}
+
+/* --- File Attachment Box (Matching LetterForm style) --- */
+input[type="file"] {
+  width: 100%;
+  font-size: 13px;
+  color: var(--label-color);
+  padding: 6px 0;
+  /* Adjust spacing around the file text */
+}
+
+/* The button inside the file input */
+input[type="file"]::file-selector-button {
+  padding: 8px 12px;
+  margin-right: 12px;
+  font-weight: 500;
+  color: var(--primary-blue);
+  background-color: #ffffff;
+  border: 1px solid var(--primary-blue);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background-color 0.15s ease-in-out;
+}
+
+input[type="file"]::file-selector-button:hover {
+  background-color: #f0f6ff;
+}
+/* --- Checkboxes (Fixed Alignment & Spacing) --- */
+
+/* 1. The Container: Ensures it sits on the left */
+.checkbox-group {
+  display: flex;
+  justify-content: flex-start;
+  /* Force left alignment */
+  width: 100%;
+  margin-top: 16px;
+  /* Space between Designation box and Checkbox */
+}
+
+/* 2. The Label: Flex container for Box + Text */
+.checkbox-group label {
+  display: flex;
+  align-items: center;
+  /* Vertically center the text with the box */
+  gap: 12px;
+  /* Distance between the tick box and the text "Active" */
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-color);
+  user-select: none;
+  /* Prevents highlighting text when clicking fast */
+}
+
+/* 3. The Input: Resetting the width is the KEY FIX here */
+.checkbox-group input[type="checkbox"] {
+  width: 18px !important;
+  /* override the 100% width from other inputs */
+  height: 18px !important;
+  flex-shrink: 0;
+  /* Prevents box from getting squished */
+  margin: 0;
+
+  /* Custom Design Styles */
+  appearance: none;
+  -webkit-appearance: none;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background-color: var(--input-bg);
+  cursor: pointer;
+  position: relative;
+}
+
+/* Checked State - The Blue Fill and Tick */
+.checkbox-group input[type="checkbox"]:checked {
+  background-color: var(--primary-blue);
+  border-color: var(--primary-blue);
+  /* SVG Checkmark */
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3l6-6'/%3e%3c/svg%3e");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+/* --- Actions / Buttons --- */
+.form-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border-color);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* Primary Button */
+.btn-primary {
+  background-color: var(--primary-blue);
+  color: #ffffff;
+  border-color: var(--primary-blue);
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+  border-color: var(--primary-hover);
+}
+
+/* Secondary Button */
+.btn-secondary {
+  background-color: #ffffff;
+  color: var(--text-color);
+  border-color: var(--border-color);
+}
+
+.btn-secondary:hover {
+  background-color: #f8f9fa;
+  border-color: #b3b3b3;
+}
+
+/* --- Attachments Wrapper (Optional: if you use the dotted box style) --- */
+.attachments-wrapper {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.add-attachment-btn {
+  width: 100%;
+  height: 50px;
+  border: 1px dashed var(--primary-blue);
+  background-color: transparent;
+  color: var(--primary-blue);
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+}
+
+.add-attachment-btn:hover {
+  background-color: #f0f9ff;
+}

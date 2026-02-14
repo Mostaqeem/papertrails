@@ -1,0 +1,25 @@
+Subject: New Agreement Created – {{ agreement.title }}
+
+Body:
+Dear {{ recipient_name }},
+
+A new agreement titled "{{ agreement.title }}" has been created in the system by {{ created_by }} on {{ created_date }}.
+
+You have access to view this agreement and its related details.
+
+Key Details:
+
+Agreement ID: {{ agreement_reference }}
+
+Agreement Type: {{ agreement_type }}
+
+Valid From: {{ start_date }}
+
+Valid To: {{ expiry_date }}
+
+To review the agreement, please click the link below:
+View Agreement [application_link]
+
+Best regards,
+PaperTrail Team
+Sonali Intellect Limited

@@ -1,0 +1,591 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap");
+
+/* --- Root Variables --- */
+:root {
+  --primary-blue: #008fd5;
+  --border-color: #ced4da;
+  --input-bg: #ffffff;
+  --input-bg-light: #ffffff; /* CHANGED: Set to white */
+  --text-color: #212529;
+  --label-color: #6c757d;
+  --page-bg: #ffffff; /* CHANGED: Set to white */
+  --white: #ffffff;
+}
+
+/* --- General Page & Form Layout --- */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  background-color: var(--page-bg);
+  color: var(--text-color);
+  margin: 0;
+}
+
+.letter-form {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 24px;
+  padding: 20px;
+}
+
+/* --- Main Form Container (Left Column) --- */
+.letter-form > div:first-child {
+  background-color: var(--white);
+  padding: 24px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* --- Typography --- */
+.letter-form h2 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 24px;
+}
+
+.letter-form h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: var(--primary-blue);
+}
+
+.letter-form label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* --- Standard Form Elements --- */
+.letter-form input[type="text"],
+.letter-form input[type="date"],
+.letter-form input[type="search"],
+.letter-form textarea,
+.letter-form select {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text-color);
+  background-color: var(--input-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  box-sizing: border-box;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.letter-form select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 16px 12px;
+  padding-right: 2.5rem;
+}
+
+.letter-form input::placeholder,
+.letter-form textarea::placeholder {
+  color: #adb5bd;
+}
+
+.letter-form input:focus,
+.letter-form select:focus,
+.letter-form textarea:focus {
+  outline: 0;
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+/* Spacing for form rows */
+.letter-form > div:first-child > div {
+  margin-bottom: 16px;
+}
+
+/* --- Specific Inputs --- */
+.letter-form .ref-input {
+  background-color: var(--input-bg-light);
+  font-weight: 500;
+}
+
+/* --- File Input --- */
+.letter-form input[type="file"] {
+  width: 100%;
+  font-size: 13px;
+  color: var(--label-color);
+}
+
+.letter-form input[type="file"]::file-selector-button {
+  padding: 8px 12px;
+  margin-right: 12px;
+  font-weight: 500;
+  color: var(--primary-blue);
+  background-color: var(--white);
+  border: 1px solid var(--primary-blue);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.15s ease-in-out;
+}
+
+.letter-form input[type="file"]::file-selector-button:hover {
+  background-color: #f0f6ff;
+}
+
+/* --- ReactQuill Editor Styles --- */
+.letter-form .ql-toolbar {
+  border: none !important;
+  border-bottom: 1px solid var(--border-color) !important;
+  background-color: var(--input-bg-light);
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+
+.letter-form .ql-container {
+  border: none !important;
+  font-size: 14px;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+/* Target the "Subject" editor container (the one without a min-height) */
+.letter-form .ql-container:not([style*="min-height"]) {
+  min-height: 50px;
+}
+
+.letter-form .ql-editor {
+  padding: 12px;
+}
+
+.letter-form .ql-editor.ql-blank::before {
+  font-style: normal;
+  color: #adb5bd;
+  left: 12px;
+}
+
+/* --- Action Buttons (Bottom) --- */
+.letter-form > div:first-child > div:last-of-type {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border-color);
+}
+
+.letter-form button {
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* Primary Button (Preview) */
+.letter-form button[type="submit"] {
+  background-color: var(--primary-blue);
+  color: var(--white);
+  border-color: var(--primary-blue);
+}
+
+.letter-form button[type="submit"]:hover {
+  background-color: #0b5ed7;
+  border-color: #0a58ca;
+}
+
+/* Secondary Buttons (Save, Print, Back) */
+.letter-form button[type="button"] {
+  background-color: var(--white);
+  border-color: var(--border-color);
+}
+
+.letter-form button[type="button"]:hover {
+  background-color: var(--page-bg);
+  border-color: #b3b3b3;
+}
+
+/* --- Sidebar (Right Column) --- */
+.letter-form > div:last-child {
+  align-self: start;
+}
+
+/* Sidebar setting row (Horizontal alignment for radios) */
+.letter-form > div:last-child > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+/* *** FIX: STACKING TEXT INPUTS (Copy Recipient Fields) *** */
+/* Target the rows that contain the text inputs for copy recipients, 
+   and override the default flex behavior to force vertical stacking. */
+.letter-form > div:last-child > div:has(input[type="text"][name^="copy"]) {
+  /* This prevents the label and input container from sitting side-by-side */
+  display: block;
+  /* Reset alignment since it's no longer flex */
+  align-items: flex-start;
+}
+
+/* Adjust the inner input wrapper for stacked fields */
+.letter-form
+  > div:last-child
+  > div:has(input[type="text"][name^="copy"])
+  > div {
+  /* This targets the <div> that contains the input and button. */
+  display: flex; /* Keep flex for the input and button to stay side-by-side */
+  align-items: center;
+  gap: 8px;
+  width: 100%; /* Ensure it spans full width */
+  margin-top: 6px; /* Add space below the label */
+}
+/* -------------------------------------------------------- */
+
+.letter-form > div:last-child > div:last-of-type {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.letter-form > div:last-child > div:first-of-type {
+  padding-top: 0;
+}
+
+/* Sidebar label */
+.letter-form > div:last-child label {
+  margin-bottom: 0;
+  font-size: 14px;
+  color: var(--text-color);
+  font-weight: 400;
+}
+
+/* Sidebar control wrapper (for radios/selects) */
+.letter-form > div:last-child > div > div {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-size: 14px;
+}
+
+/* --- Custom Radio Buttons --- */
+.letter-form input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 1px solid var(--border-color);
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  top: 3px;
+  margin-right: 4px;
+}
+
+.letter-form input[type="radio"]:checked {
+  border-color: var(--primary-blue);
+}
+
+/* The inner blue dot */
+.letter-form input[type="radio"]:checked::after {
+  content: "";
+  display: block;
+  width: 10px;
+  height: 10px;
+  background-color: var(--primary-blue);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Sidebar Select (for Copy Recipients) */
+.letter-form > div:last-child select {
+  padding: 4px 8px !important;
+  font-size: 13px !important;
+  height: 30px !important;
+  background-position: right 0.5rem center;
+  padding-right: 1.5rem !important;
+}
+
+/* The AI Button */
+.ai-trigger-btn {
+  background: linear-gradient(135deg,  #008fd5 0%, #8b9ff8 100%);
+  border: none;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+  margin-left: 10px;
+  box-shadow: 0 2px 5px rgba(100, 100, 255, 0.2);
+}
+
+.ai-trigger-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(100, 100, 255, 0.3);
+}
+
+/* The Modal Overlay */
+.ai-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* The Modal Box */
+.ai-modal-content {
+  background: white;
+  padding: 24px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.2s ease-out;
+}
+
+.ai-modal-textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  margin: 16px 0;
+  min-height: 100px;
+  font-family: inherit;
+  resize: vertical;
+}
+
+.ai-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.ai-btn-cancel {
+  background: #f1f5f9;
+  color: #475569;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.ai-btn-generate {
+  background: #6366f1;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ai-btn-generate:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* LetterForm.css */
+
+/* Remove default border from ReactQuill container when viewing */
+.view-quill .ql-container.ql-snow {
+  border: none !important;
+}
+
+/* Ensure the editor area matches the background */
+.view-quill .ql-editor {
+  background-color: #077ff7;
+  min-height: inherit;
+  /* Inherit height from parent */
+}
+/* new styles end here */
+
+/* --- New 3-Column Grid Layout for Top Section --- */
+.form-grid-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  /* 3 Equal Columns */
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+/* Title Styling: Bold, as requested */
+.form-grid-layout label {
+  font-weight: 700 !important;
+  color: #212529;
+  margin-bottom: 8px;
+  display: block;
+  font-size: 14px;
+}
+
+/* Box Layout Styling: Height 50px, Border 1px, Radius 5px */
+.form-grid-layout input[type="text"],
+.form-grid-layout select,
+.form-grid-layout .react-datepicker__input-container input {
+  height: 50px !important;
+  border-radius: 5px !important;
+  border-width: 1px !important;
+  border-color: #ced4da;
+  width: 100%;
+  font-size: 14px;
+  padding: 0 12px;
+  box-sizing: border-box;
+}
+
+/* Fix for DatePicker to ensure full width */
+.form-grid-layout .react-datepicker-wrapper {
+  width: 100%;
+}
+
+/* --- Attachments Section Layout --- */
+
+/* 1. Main Container for the whole section */
+.attachments-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+
+.attachments-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #212529;
+  /* color: #ffffff; */
+  margin-bottom: 8px;
+}
+
+/* 2. The Individual Attachment Row (Grid Layout) */
+.attachment-row {
+  display: grid;
+  /* Columns: Input stretches | Button | Filename | Trash Icon */
+  grid-template-columns: 1fr auto auto auto;
+  align-items: center;
+  gap: 16px;
+  /* Spacing between elements inside the row */
+  width: 100%;
+  height: 78px;
+  /* Fixed height per Figma */
+  padding: 0 20px;
+  background-color: #ffffff;
+  border: 1px dotted #ced4da;
+  /* Dotted border matching image */
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+/* 3. The Title Input Field */
+.attachment-title-input {
+  height: 45px !important;
+  border: 1px solid #ced4da !important;
+  border-radius: 4px !important;
+  padding: 0 12px;
+  font-size: 14px;
+  background-color: #ffffff !important;
+  width: 100%;
+}
+
+/* 1. PASTE THIS AT THE VERY TOP OF LetterForm.css */
+/* 2. UPDATE THIS CLASS (Scroll down to find it) */
+/* 3. The Blue "Choose File" Button */
+.custom-file-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  padding: 0 24px;
+
+  background-color: #008fd5;
+  color: #ffffff;
+
+  border-radius: 4px; /* Matches the image rounded corners */
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s;
+
+  /* Typography Settings */
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 300%;
+  letter-spacing: 0px;
+  text-align: center;
+  font-style: normal;
+}
+
+.custom-file-label:hover {
+  background-color: #007bb5; /* Slightly darker on hover */
+}
+/* 5. Filename Text */
+.file-name-text {
+  font-size: 14px;
+  color: #555;
+  max-width: 200px;
+  /* Limits width so it doesn't break layout */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 6. The Bottom "+ Add New" Dashed Button */
+.add-new-btn {
+  width: 100%;
+  height: 50px;
+  /* Fixed height per Figma */
+  border: 1px dashed #008fd5;
+  /* Blue dashed border */
+  background-color: transparent;
+  color: #008fd5;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+}
+
+.add-new-btn:hover {
+  background-color: #f0f9ff;
+}
+
+/* Trash Icon Button - Override default button styles */
+.letter-form button[style*="background: none"] {
+  padding: 4px !important;
+  background: none !important;
+  border: none !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 32px !important;
+  width: 32px !important;
+}

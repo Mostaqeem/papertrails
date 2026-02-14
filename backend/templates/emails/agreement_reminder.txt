@@ -1,0 +1,33 @@
+{% if reminder_type == 'before' %}
+Hello {{ recipient_name }},
+
+This is a reminder that your agreement "{{ agreement_name }}" with {{ partner_name }} is set to expire on {{ expiration_date }}.
+
+Time remaining: {{ time_remaining }}
+
+If you wish to renew or make changes to your agreement, please contact us before the expiration date to avoid any disruptions.
+
+Reference ID: {{ agreement_id }}
+
+{% elif reminder_type == 'on' %}
+Hello {{ recipient_name }},
+
+Your agreement "{{ agreement_name }}" with {{ partner_name }} has expired today, {{ expiration_date }}.
+
+If this was an oversight or if you’d like to renew, please reach out to us immediately to avoid any service interruptions.
+
+Reference ID: {{ agreement_id }}
+
+{% elif reminder_type == 'after' %}
+Hello {{ recipient_name }},
+
+This is a follow-up to inform you that your agreement "{{ agreement_name }}" with {{ partner_name }} expired on {{ expiration_date }}.
+
+It has been {{ months_since_expiration }} month(s) since expiration.
+If you wish to reinstate your agreement, please contact us as soon as possible.
+
+Reference ID: {{ agreement_id }}
+{% endif %}
+
+Kind regards,
+{% if company_name %}{{ company_name }} Papertrails Team{% else %}Papertrails Team{% endif %}

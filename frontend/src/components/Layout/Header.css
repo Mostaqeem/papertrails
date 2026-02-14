@@ -1,0 +1,53 @@
+/* Notification badge styles */
+.notification-badge {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Mobile bell button */
+.mobile-bell-btn {
+  position: relative;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+
+/* Desktop bell button */
+.desktop-bell-btn {
+  position: relative;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+}
+
+.desktop-bell-btn:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Hide desktop bell on mobile and mobile bell on desktop */
+@media (max-width: 768px) {
+  .desktop-bell-btn {
+    display: none;
+  }
+}
+
+@media (min-width: 769px) {
+  .mobile-bell-btn {
+    display: none;
+  }
+}

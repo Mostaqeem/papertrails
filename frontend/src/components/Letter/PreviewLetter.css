@@ -1,0 +1,264 @@
+.preview-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.preview-modal {
+  background: white;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 1200px;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.preview-header {
+  padding: 20px;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f8f9fa;
+}
+
+.preview-header h2 {
+  margin: 0;
+  color: #333;
+}
+
+.preview-controls {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.preview-controls button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.edit-btn {
+  background: #007bff;
+  color: white;
+}
+
+.edit-btn:hover {
+  background: #0056b3;
+}
+
+.save-btn {
+  background: #28a745;
+  color: white;
+}
+
+.save-btn:hover {
+  background: #1e7e34;
+}
+
+.cancel-btn {
+  background: #6c757d;
+  color: white;
+}
+
+.cancel-btn:hover {
+  background: #545b62;
+}
+
+.download-btn {
+  background: #17a2b8;
+  color: white;
+}
+
+.download-btn:hover {
+  background: #138496;
+}
+
+.print-btn {
+  background: #ffc107;
+  color: #212529;
+}
+
+.print-btn:hover {
+  background: #e0a800;
+}
+
+.close-btn {
+  background: #dc3545;
+  color: white;
+}
+
+.close-btn:hover {
+  background: #c82333;
+}
+
+.preview-content {
+  flex: 1;
+  overflow: auto;
+  padding: 20px;
+}
+
+.letter-preview {
+  max-width: 800px;
+  margin: 0 auto;
+  background: white;
+  padding: 40px;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.letter-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.letter-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.letter-ref h2 {
+  font-size: 16px;
+  margin: 0;
+  color: #666;
+}
+
+.divider {
+  border: none;
+  border-top: 2px solid #333;
+  margin: 20px 0;
+}
+
+.letter-metadata {
+  margin-bottom: 30px;
+}
+
+.company-name {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.recipient-info {
+  margin-bottom: 20px;
+  line-height: 1.8;
+}
+
+.subject-section {
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.salutation {
+  margin-bottom: 20px;
+}
+
+.letter-body {
+  margin-bottom: 40px;
+  min-height: 200px;
+}
+
+.letter-body p {
+  margin-bottom: 15px;
+}
+
+.letter-closing {
+  margin-bottom: 40px;
+}
+
+.signature {
+  margin-top: 60px;
+}
+
+.signatory-name {
+  margin: 20px 0;
+  font-weight: bold;
+}
+
+.letter-footer {
+  margin-top: 60px;
+  font-size: 12px;
+  color: #666;
+}
+
+.footer-note {
+  margin-bottom: 20px;
+  font-style: italic;
+}
+
+.footer-meta {
+  margin-top: 20px;
+}
+
+.footer-address {
+  text-align: center;
+  margin-top: 10px;
+  line-height: 1.4;
+}
+
+/* Editable fields styling */
+.editable-field {
+  width: 100%;
+  border: 2px dashed #007bff;
+  background: #f8fbff;
+  padding: 8px;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+.recipient-editable {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.subject-editable {
+  font-weight: bold;
+}
+
+.body-editable {
+  min-height: 300px;
+  resize: vertical;
+  font-family: inherit;
+  line-height: 1.6;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .preview-modal {
+    height: 95vh;
+    margin: 10px;
+  }
+  
+  .preview-header {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .preview-controls {
+    justify-content: center;
+  }
+  
+  .letter-preview {
+    padding: 20px;
+  }
+}

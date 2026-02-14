@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agreement Notification</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f7f9fc;
+            padding: 20px;
+        }
+
+        .email-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .email-header {
+            background: linear-gradient(135deg, #2c3e50, #4a6572);
+            color: white;
+            padding: 25px 30px;
+            text-align: center;
+        }
+
+        .email-header h1 {
+            color: darkcyan;
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .email-body {
+            padding: 30px;
+        }
+
+        .greeting {
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        .action-badge {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-transform: capitalize;
+        }
+
+        .agreement-details {
+            background-color: #f8f9fa;
+            border-left: 4px solid #3498db;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .detail-row {
+            display: flex;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eaeaea;
+        }
+
+        .detail-row:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .detail-label {
+            font-weight: 600;
+            width: 150px;
+            color: #555;
+        }
+
+        .detail-value {
+            flex: 1;
+        }
+
+        .cta-button {
+            display: block;
+            width: 100%;
+            text-align: center;
+            background-color: #3498db;
+            color: white;
+            padding: 14px 0;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            margin: 25px 0;
+            transition: background-color 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: #2980b9;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #7f8c8d;
+            font-size: 14px;
+            border-top: 1px solid #eaeaea;
+        }
+
+        .footer a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        @media screen and (max-width: 600px) {
+            .email-container {
+                width: 100%;
+            }
+
+            .email-body {
+                padding: 20px;
+            }
+
+            .detail-row {
+                flex-direction: column;
+            }
+
+            .detail-label {
+                width: 100%;
+                margin-bottom: 5px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="email-container">
+        <div class="email-header">
+            <h1>Papertrails Agreement Notification</h1>
+        </div>
+
+        <div class="email-body">
+            <p class="greeting">Dear Papertrails User,</p>
+
+            <div>The following agreement has been {{ action|title }}</div>
+
+            <p>A new agreement titled <strong>{{ agreement.title }}</strong> has been <strong>{{ action }}</strong> in
+                the system by <strong>{{ agreement.creator }}</strong>.</p>
+
+            <div class="agreement-details">
+                <h3 style="margin-bottom: 15px; color: #2c3e50;">Key Details</h3>
+
+                <div class="detail-row">
+                    <span class="detail-label">Title:</span>
+                    <span class="detail-value">{{ agreement.title }}</span>
+                </div>
+
+                <div class="detail-row">
+                    <span class="detail-label">Reference:</span>
+                    <span class="detail-value">{{ agreement.agreement_reference|default:"N/A" }}</span>
+                </div>
+
+                <div class="detail-row">
+                    <span class="detail-label">Department:</span>
+                    <span class="detail-value">
+                        {% if agreement.department %}
+                        {{ agreement.department.name }}
+                        {% else %}
+                        N/A
+                        {% endif %}
+                    </span>
+                </div>
+
+                <div class="detail-row">
+                    <span class="detail-label">Vendor:</span>
+                    <span class="detail-value">
+                        {% if agreement.party_name %}
+                        {{ agreement.party_name.name }}
+                        {% else %}
+                        N/A
+                        {% endif %}
+                    </span>
+                </div>
+
+                <div class="detail-row">
+                    <span class="detail-label">Agreement Type:</span>
+                    <span class="detail-value">
+                        {% if agreement.agreement_type %}
+                        {{ agreement.agreement_type.name }}
+                        {% else %}
+                        N/A
+                        {% endif %}
+                    </span>
+                </div>
+
+                <div class="detail-row">
+                    <span class="detail-label">Start Date:</span>
+                    <span class="detail-value">{{ agreement.start_date }}</span>
+                </div>
+
+                <div class="detail-row">
+                    <span class="detail-label">Expiry Date:</span>
+                    <span class="detail-value">{{ agreement.expiry_date }}</span>
+                </div>
+            </div>
+
+            <p>To review the agreement, please click the button below:</p>
+
+            <a href="http://172.17.231.72:3000" class="cta-button">Review Agreement</a>
+            <br>
+            <p>Regards,</p>
+            <p>The Papertrails Team</p>
+        </div>
+
+        <div class="footer">
+            <p>This is an automated notification from Papertrails Agreement Management System.</p>
+            <p>Please do not reply to this email.</p>
+        </div>
+    </div>
+
+</body>
+
+</html>

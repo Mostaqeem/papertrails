@@ -1,0 +1,686 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+.letter-list-container {
+ 
+  padding: 24px;
+  background-color: #f8f9fa;
+}
+
+.header-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.header-section h1 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.add-new-btn-list {
+  height: 50px;
+  width: 150px;
+  background-color: var(--primary-blue);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 30px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.2s;
+}
+
+.add-new-btn-list:hover {
+  background-color: #0077cc;
+}
+
+.stats-section {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.stat-card {
+  background: white;
+  padding: 16px;
+  border-radius: 8px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.stat-label {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.stat-value {
+  font-size: 28px;
+  font-weight: 600;
+}
+
+/* Add spacing between the filter section and the table */
+.filters-section {
+  margin-bottom: 30px;
+  /* This creates the gap before the table */
+}
+
+/* Force the last filter group (the buttons) to align horizontally */
+.filter-row:last-child .filter-group {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  /* Space between Reset and Search buttons */
+}
+
+/* Shared styles for both buttons to make them identical */
+.reset-btn,
+.search-btn {
+  width: 150px;
+  /* 1. FIXED WIDTH for both */
+  height: 45px;
+  /* 2. FIXED HEIGHT for both */
+  padding: 0;
+  /* Reset padding to ensure centering works */
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  /* Space between icon and text */
+  font-weight: 500;
+  flex: none;
+  /* Prevents them from stretching unexpectedly */
+}
+
+/* Specific Colors */
+.reset-btn {
+  background-color: #ff6b61;
+}
+
+.search-btn {
+  background-color: #0b95e5;
+}
+
+/* Hover Effects */
+.reset-btn:hover {
+  background-color: #ff5a4d;
+}
+
+.search-btn:hover {
+  background-color: #0087d6;
+}
+.filter-row {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.filter-row:last-child {
+  margin-bottom: 0;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 180px;
+}
+
+.filter-group.large {
+  flex: 2;
+}
+
+.filter-group label {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.filter-group input,
+.filter-group select {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.filter-row {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.filter-group {
+  display: flex;
+  gap: 20px;
+}
+
+.reset-btn,
+.search-btn {
+  flex: 1;
+  /* Makes both buttons equal width */
+  padding: 12px 0;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  /* Space between icon and text */
+  font-weight: 500;
+}
+
+/* Reset button style (Red) */
+.reset-btn {
+  background-color: #ff6b61;
+}
+
+/* Search button style (Blue) */
+.search-btn {
+  background-color: #0b95e5;
+}
+
+/* Optional hover */
+.reset-btn:hover {
+  background-color: #ff5a4d;
+}
+
+.search-btn:hover {
+  background-color: #0087d6;
+}
+
+/* Make ONLY the last button group a flex row */
+.filter-row:last-child .filter-group {
+  display: flex;
+  flex-direction: row;
+  gap: 17px;
+}
+
+.table-container {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  padding-top: 30px;
+}
+
+.letter-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.letter-table th {
+  background-color: #f8f9fa;
+  padding: 12px 16px;
+  text-align: left;
+  font-weight: 500;
+  color: #666;
+  border-bottom: 1px solid #eee;
+}
+
+.letter-table td {
+  padding: 16px;
+  border-bottom: 1px solid #eee;
+}
+
+.letter-table tr:hover {
+  background-color: #f8f9fa;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.action-btn {
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background: none;
+}
+
+.action-btn.download {
+  color: #0096FF;
+}
+
+.action-btn.view {
+  color: #666;
+}
+
+.action-btn:hover {
+  background: #e0e0e0;
+}
+
+.letter-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #e1e4e8;
+}
+
+.letter-list-header h1 {
+  color: #2c3e50;
+  margin: 0;
+  font-size: 24px;
+}
+
+.user-welcome {
+  text-align: right;
+}
+
+.user-welcome span {
+  display: block;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.current-time {
+  font-size: 12px;
+  color: #7f8c8d;
+}
+
+.letter-list-content {
+  display: flex;
+  gap: 20px;
+}
+
+.sidebar {
+  width: 300px;
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.main-content {
+  flex: 1;
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.menu-section h2 {
+  margin-top: 0;
+  color: #2c3e50;
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.stats-section, .notifications-section {
+  margin-bottom: 30px;
+}
+
+.stats-section h3, .notifications-section h3 {
+  color: #2c3e50;
+  font-size: 16px;
+  margin-bottom: 15px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #eee;
+}
+
+.stat-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.stat-number {
+  font-weight: 600;
+  color: #3498db;
+}
+
+.notification-item {
+  padding: 10px 0;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.notification-title {
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.notification-subtitle {
+  color: #7f8c8d;
+  font-size: 14px;
+}
+
+.notification-time {
+  color: #95a5a6;
+  font-size: 12px;
+}
+
+/* .filters-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 15px;
+  margin-bottom: 20px;
+} */
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.filter-group label {
+  font-size: 12px;
+  margin-bottom: 5px;
+  color: #7f8c8d;
+}
+
+.filter-group input, .filter-group select {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.letters-table {
+  margin-top: 20px;
+}
+
+.table-header {
+  margin-bottom: 15px;
+}
+
+.table-header h3 {
+  margin: 0;
+  color: #2c3e50;
+  font-size: 16px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+th {
+  background-color: #f8f9fa;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.view-btn, .edit-btn {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.view-btn {
+  background-color: #3498db;
+  color: white;
+}
+
+.edit-btn {
+  background-color: #2ecc71;
+  color: white;
+}
+
+.view-btn:hover {
+  background-color: #2980b9;
+}
+
+.edit-btn:hover {
+  background-color: #27ae60;
+}
+
+@media (max-width: 1024px) {
+  .letter-list-content {
+    flex-direction: column;
+  }
+  
+  .sidebar {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  .filters-section {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+}
+.filter-row {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.filter-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.filter-group.large {
+  flex: 2;
+}
+
+/* Styling for the new DatePicker to match your existing inputs */
+.date-picker-input {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  width: 100%;
+  /* Ensures it fills the container */
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+/* Fix for the wrapper div that react-datepicker creates */
+.react-datepicker-wrapper {
+  width: 100%;
+}
+
+/* Modal Styles for Letter Files */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  max-width: 600px;
+  width: 90%;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.modal-header h2 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.modal-close-btn {
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: #666;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-close-btn:hover {
+  color: #000;
+}
+
+.modal-body {
+  padding: 20px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.no-files-message {
+  text-align: center;
+  color: #999;
+  padding: 40px 20px;
+  font-size: 14px;
+}
+
+.file-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.file-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  background-color: #f8f9fa;
+  transition: background-color 0.2s ease;
+}
+
+.file-item:hover {
+  background-color: #f0f0f0;
+}
+
+.file-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.file-name {
+  font-weight: 500;
+  color: #1a1a1a;
+  font-size: 14px;
+}
+
+.file-date {
+  font-size: 12px;
+  color: #999;
+}
+
+.file-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.file-view-btn,
+.file-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border: 1px solid #0096FF;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.file-view-btn {
+  color: #0096FF;
+  background-color: white;
+}
+
+.file-view-btn:hover {
+  background-color: #e6f2ff;
+}
+
+.file-download-btn {
+  color: #28a745;
+  border-color: #28a745;
+  background-color: white;
+}
+
+.file-download-btn:hover {
+  background-color: #f0f8f5;
+}
+
+.file-view-btn i,
+.file-download-btn i {
+  font-size: 14px;
+}
+
+.ref-link {
+  color: #0096FF;
+  /* Blue color */
+  cursor: pointer;
+  /* Hand cursor on hover */
+  font-weight: 600;
+  /* Slightly bold */
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.ref-link:hover {
+  color: #0056b3;
+  /* Darker blue on hover */
+  text-decoration: underline;
+}

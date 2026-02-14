@@ -1,0 +1,21 @@
+.accessDenied {
+  text-align: center;
+  padding: 2rem;
+  color: red;
+  max-width: 600px;
+  margin: 2rem auto;
+}
+
+.backButton {
+  padding: 0.5rem 1rem;
+  background: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.backButton:hover {
+  background: #0056b3;
+}

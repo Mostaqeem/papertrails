@@ -1,0 +1,343 @@
+// import { FiSearch, FiMenu, FiBell } from 'react-icons/fi';
+// import { useLocation, NavLink, useNavigate } from 'react-router-dom';
+// import React, { useState, useEffect, useRef } from 'react';
+
+// const Header = ({ onMenuClick, onRightPanelClick }) => {
+//   const location = useLocation();
+//   const navigate = useNavigate();
+//   const pathnames = location.pathname.split('/').filter(x => x); // Split path and filter out empty strings
+
+//   const [currentDateTime, setCurrentDateTime] = useState(new Date());
+//   const [dropdownOpen, setDropdownOpen] = useState(false);
+//   const profileRef = useRef(null);
+//   const [showSidebar, setShowSidebar] = useState(false);
+
+//   // Get first name from email
+//   let firstName = 'User';
+//   const userEmail = localStorage.getItem('userEmail');
+//   if (userEmail) {
+//     const namePart = userEmail.split('@')[0];
+//     // Split by dot, underscore, or dash, and capitalize first letter
+//     const first = namePart.split(/[._-]/)[0];
+//     firstName = first.charAt(0).toUpperCase() + first.slice(1);
+//   }
+
+//   useEffect(() => {
+//     const timer = setInterval(() => {
+//       setCurrentDateTime(new Date());
+//     }, 1000);
+
+//     return () => {
+//       clearInterval(timer);
+//     };
+//   }, []);
+
+//   useEffect(() => {
+//     function handleClickOutside(event) {
+//       if (profileRef.current && !profileRef.current.contains(event.target)) {
+//         setDropdownOpen(false);
+//       }
+//     }
+//     if (dropdownOpen) {
+//       document.addEventListener('mousedown', handleClickOutside);
+//     } else {
+//       document.removeEventListener('mousedown', handleClickOutside);
+//     }
+//     return () => {
+//       document.removeEventListener('mousedown', handleClickOutside);
+//     };
+//   }, [dropdownOpen]);
+
+//   const formattedTime = currentDateTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+//   const formattedDate = currentDateTime.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+
+//   const handleLogout = () => {
+//     localStorage.removeItem('isLoggedIn');
+//     localStorage.removeItem('token');
+//     setDropdownOpen(false);
+//     navigate('/signin');
+//   };
+
+//   return (
+//     <header className="header">
+//       {/* Mobile menu button */}
+//       <button 
+//         className="mobile-menu-btn" 
+//         onClick={onMenuClick}
+//         aria-label="Toggle menu"
+//       >
+//         <FiMenu size={24} />
+//       </button>
+      
+//       {/* Mobile notifications button */}
+//       <button 
+//         className="mobile-bell-btn" 
+//         onClick={onRightPanelClick}
+//         aria-label="Toggle notifications"
+//       >
+//         <FiBell size={24} />
+//       </button>
+      
+//       {/* Column 1: Logo (aligned with LeftPanel) */}
+//       <div className="header-logo-column">
+//         <img src="/sonali_intellect_logo.png" alt="Sonali Intellect" className="full-logo" style={{height: 32}} />
+//       </div>
+
+//       {/* Column 2: Breadcrumb (aligned with Main Content) */}
+//       <div className="header-main-column">
+//         <span className="menu-path">
+//           {/* 'Menu' is always the first part, linking to dashboard */}
+//           <NavLink to="/" className="breadcrumb-link">Menu</NavLink>
+          
+//           {pathnames.map((name, index) => {
+//             const routeTo = `/${pathnames.slice(0, index + 1).join('/')}`;
+//             const isLast = index === pathnames.length - 1;
+//             const displayName = name.replace(/-/g, ' ') // Replace hyphens with spaces
+//                                       .split(' ') // Split into words
+//                                       .map(word => word.charAt(0).toUpperCase() + word.slice(1)) // Capitalize each word
+//                                       .join(' '); // Join back with spaces
+
+//             return ( 
+//               <React.Fragment key={name}> 
+//                 <span className="breadcrumb-separator">/</span>
+//                 {isLast ? (
+//                   <span className="breadcrumb-current">{displayName === '' ? 'Dashboard' : displayName}</span> // Handle root path as Dashboard
+//                 ) : (
+//                   <NavLink to={routeTo} className="breadcrumb-link">
+//                     {displayName}
+//                   </NavLink>
+//                 )}
+//               </React.Fragment>
+//             );
+//           })}
+//         </span>
+//       </div>
+
+//       {/* Column 3: Time/Date and User Profile (aligned with RightPanel) */}
+//       <div className="header-right-column">
+//         <span className="time-date">{formattedTime} / {formattedDate}</span>
+//         <div className="user-profile" ref={profileRef} style={{ position: 'relative', cursor: 'pointer' }} onClick={() => setDropdownOpen(v => !v)}>
+//           <img src="/avatar.png" alt="User Profile" className="user-avatar" />
+//           <span className="user-name" style={{whiteSpace: 'nowrap', marginLeft: 4}}>{firstName}</span>
+//           {dropdownOpen && (
+//             <div style={{ position: 'absolute', right: 0, top: '110%', background: '#fff', boxShadow: '0 2px 8px rgba(0,0,0,0.12)', borderRadius: 6, minWidth: 150, zIndex: 10 }}>
+//               <button onClick={() => navigate('/change-password')} style={{ width: '100%', padding: '10px 16px', background: 'none', border: 'none', textAlign: 'left', cursor: 'pointer', fontWeight: 500, color: '#222', borderRadius: 6 }}>
+//                 Change Password
+//               </button>
+//               <button onClick={handleLogout} style={{ width: '100%', padding: '10px 16px', background: 'none', border: 'none', textAlign: 'left', cursor: 'pointer', fontWeight: 500, color: '#222', borderRadius: 6 }}>
+//                 Logout
+//               </button>
+//             </div>
+//           )}
+//         </div>
+//       </div>
+//     </header>
+//   );
+// };
+
+// export default Header;
+
+import { FiSearch, FiMenu, FiBell } from 'react-icons/fi';
+import { useLocation, NavLink, useNavigate } from 'react-router-dom';
+import React, { useState, useEffect, useRef } from 'react';
+import './Header.css';
+import bellIcon from '../../assets/icons/notification.svg';
+const Header = ({ onMenuClick, onRightPanelClick, notificationCount = 0 }) => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const pathnames = location.pathname.split('/').filter(x => x); // Split path and filter out empty strings
+
+  const [currentDateTime, setCurrentDateTime] = useState(new Date());
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const profileRef = useRef(null);
+  const [showSidebar, setShowSidebar] = useState(false);
+
+  // Get first name from email
+  let firstName = 'User';
+  const userEmail = localStorage.getItem('userEmail');
+  if (userEmail) {
+    const namePart = userEmail.split('@')[0];
+    // Split by dot, underscore, or dash, and capitalize first letter
+    const first = namePart.split(/[._-]/)[0];
+    firstName = first.charAt(0).toUpperCase() + first.slice(1);
+  }
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentDateTime(new Date());
+    }, 1000);
+
+    return () => {
+      clearInterval(timer);
+    };
+  }, []);
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (profileRef.current && !profileRef.current.contains(event.target)) {
+        setDropdownOpen(false);
+      }
+    }
+    if (dropdownOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    } else {
+      document.removeEventListener('mousedown', handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [dropdownOpen]);
+
+  const formattedTime = currentDateTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  const formattedDate = currentDateTime.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+
+  const handleLogout = () => {
+    localStorage.removeItem('isLoggedIn');
+    localStorage.removeItem('token');
+    setDropdownOpen(false);
+    navigate('/signin');
+  };
+
+  return (
+    <header className="header">
+      {/* Mobile menu button */}
+      <button 
+        className="mobile-menu-btn" 
+        onClick={onMenuClick}
+        aria-label="Toggle menu"
+      >
+        <FiMenu size={24} />
+      </button>
+      
+      {/* Mobile notifications button with badge */}
+      <button 
+        className="mobile-bell-btn" 
+        onClick={onRightPanelClick}
+        aria-label="Toggle notifications"
+        style={{ position: 'relative' }}
+      >
+        <img src={bellIcon} alt="Notifications" />
+        {notificationCount > 0 && (
+          <span 
+            className="notification-badge"
+            style={{
+              position: 'absolute',
+              top: '-6px',
+              right: '-6px',
+              backgroundColor: '#ff4444',
+              color: 'white',
+              borderRadius: '50%',
+              width: '18px',
+              height: '18px',
+              fontSize: '10px',
+              fontWeight: 'bold',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              lineHeight: 1,
+            }}
+          >
+            {notificationCount > 9 ? '9+' : notificationCount}
+          </span>
+        )}
+      </button>
+      
+      {/* Column 1: Logo (aligned with LeftPanel) */}
+      <div className="header-logo-column">
+        <img src="/sonali_intellect_logo.png" alt="Sonali Intellect" className="full-logo" style={{height: 32}} />
+      </div>
+
+      {/* Column 2: Breadcrumb (aligned with Main Content) */}
+      <div className="header-main-column">
+        <span className="menu-path">
+          {/* 'Menu' is always the first part, linking to dashboard */}
+          <NavLink to="/" className="breadcrumb-link">Menu</NavLink>
+          
+          {pathnames.map((name, index) => {
+            const routeTo = `/${pathnames.slice(0, index + 1).join('/')}`;
+            const isLast = index === pathnames.length - 1;
+            const displayName = name.replace(/-/g, ' ') // Replace hyphens with spaces
+                                      .split(' ') // Split into words
+                                      .map(word => word.charAt(0).toUpperCase() + word.slice(1)) // Capitalize each word
+                                      .join(' '); // Join back with spaces
+
+            return ( 
+              <React.Fragment key={name}> 
+                <span className="breadcrumb-separator">/</span>
+                {isLast ? (
+                  <span className="breadcrumb-current">{displayName === '' ? 'Dashboard' : displayName}</span> // Handle root path as Dashboard
+                ) : (
+                  <NavLink to={routeTo} className="breadcrumb-link">
+                    {displayName}
+                  </NavLink>
+                )}
+              </React.Fragment>
+            );
+          })}
+        </span>
+      </div>
+
+      {/* Column 3: Time/Date and User Profile (aligned with RightPanel) */}
+      <div className="header-right-column">
+        <span className="time-date">{formattedTime} / {formattedDate}</span>
+        
+        {/* Desktop notification bell with badge */}
+        <button 
+          className="desktop-bell-btn" 
+          onClick={onRightPanelClick}
+          aria-label="Toggle notifications"
+          style={{ 
+            position: 'relative', 
+            background: 'none', 
+            border: 'none', 
+            cursor: 'pointer',
+            marginRight: '16px',
+            padding: '8px'
+          }}
+        >
+          <FiBell size={20} />
+          {notificationCount > 0 && (
+            <span 
+              className="notification-badge"
+              style={{
+                position: 'absolute',
+                top: '2px',
+                right: '2px',
+                backgroundColor: '#ff4444',
+                color: 'white',
+                borderRadius: '50%',
+                width: '16px',
+                height: '16px',
+                fontSize: '10px',
+                fontWeight: 'bold',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                lineHeight: 1,
+              }}
+            >
+              {notificationCount > 9 ? '9+' : notificationCount}
+            </span>
+          )}
+        </button>
+        
+        <div className="user-profile" ref={profileRef} style={{ position: 'relative', cursor: 'pointer' }} onClick={() => setDropdownOpen(v => !v)}>
+          <img src="/avatar.png" alt="User Profile" className="user-avatar" />
+          <span className="user-name" style={{whiteSpace: 'nowrap', marginLeft: 4}}>{firstName}</span>
+          {dropdownOpen && (
+            <div style={{ position: 'absolute', right: 0, top: '110%', background: '#fff', boxShadow: '0 2px 8px rgba(0,0,0,0.12)', borderRadius: 6, minWidth: 150, zIndex: 10 }}>
+              <button onClick={() => navigate('/change-password')} style={{ width: '100%', padding: '10px 16px', background: 'none', border: 'none', textAlign: 'left', cursor: 'pointer', fontWeight: 500, color: '#222', borderRadius: 6 }}>
+                Change Password
+              </button>
+              <button onClick={handleLogout} style={{ width: '100%', padding: '10px 16px', background: 'none', border: 'none', textAlign: 'left', cursor: 'pointer', fontWeight: 500, color: '#222', borderRadius: 6 }}>
+                Logout
+              </button>
+            </div>
+          )}
+        </div>
+      </div>
+    </header>
+  );
+};
+
+export default Header;

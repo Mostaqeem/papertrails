@@ -1,0 +1,21 @@
+Dear {user_name},
+
+Welcome to Paper Trails! Your account has been successfully created.
+
+Below are your temporary login credentials:
+
+Email: {user_email}
+Temporary Password: {temp_password}
+
+For security reasons, please change your password upon your first login. To do this:
+1. Log in using the temporary password provided above
+2. Go to Profile Settings
+3. Click on "Change Password"
+4. Enter your new password
+
+If you didn't request this account, please contact our support team immediately.
+
+Best regards,
+Paper Trails Team
+
+Note: This is an automated message. Please do not reply to this email.

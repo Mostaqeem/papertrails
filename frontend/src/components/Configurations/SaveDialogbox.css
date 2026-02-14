@@ -1,0 +1,91 @@
+:root {
+  --primary-blue: #008fd5;
+  --primary-hover: #007bb5;
+  --border-color: #ced4da;
+  --input-bg: #ffffff;
+  --text-color: #212529;
+  --label-color: #6c757d;
+  --focus-ring: rgba(13, 110, 253, 0.25);
+  --radius-md: 6px;
+  --radius-sm: 4px;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(230, 235, 240, 0.9); /* Subtle light background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.saving-dialog {
+  background: #ffffff;
+  padding: 40px 30px;
+  border-radius: 40px; /* High border-radius as per Success.png */
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  width: 90%;
+  max-width: 380px;
+  text-align: center;
+}
+
+.status-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 20px;
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+/* Success Green Palette */
+.success-icon {
+  background-color: #2D8A4E;
+}
+
+.success-text {
+  color: #2D8A4E;
+  font-family: inherit;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0 0 10px 0;
+}
+
+.success-bg {
+  /* background-color: #2D8A4E; */
+  background-color: var(--primary-blue);
+}
+
+.dialog-subtitle {
+  font-size: 0.9rem;
+  color: #888;
+  line-height: 1.5;
+  margin-bottom: 30px;
+  padding: 0 15px;
+}
+
+.action-btn {
+  color: white;
+  border: none;
+  border-radius: 15px;
+  padding: 15px 0;
+  width: 100%;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.action-btn:hover {
+  filter: brightness(1.1);
+  color: whitesmoke;
+  background-color: var(--primary-hover);
+}

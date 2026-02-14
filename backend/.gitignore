@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Virtual environment
+env/
+venv/
+ENV/
+*.env
+*.venv
+
+# Django stuff
+*.pot
+*.pyc
+db.sqlite3
+
+
+# VSCode / IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+
+# Ignore logs and media folders
+backend/logs/
+backend/media/

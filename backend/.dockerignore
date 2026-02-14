@@ -1,0 +1,6 @@
+# Virtual environments
+env/
+venv/
+.venv/
+media/
+logs/

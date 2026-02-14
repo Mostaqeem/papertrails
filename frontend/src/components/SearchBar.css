@@ -1,0 +1,141 @@
+/* SearchBar.css
+.search-container {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  font-family: sans-serif;
+  flex-wrap: wrap;
+  padding: 16px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin-bottom: 24px;
+}
+
+.search-input-group {
+  display: flex;
+  flex-direction: column;
+  min-width: 140px;
+}
+
+.search-label {
+  margin-bottom: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+  padding-left: 4px;
+  padding-bottom: 5px;
+}
+
+.search-select {
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  font-size: 13px;
+  background-color: white;
+  cursor: pointer;
+  min-height: 36px;
+}
+
+.search-button {
+  padding: 8px 16px;
+  border-radius: 6px;
+  background-color: #0b84cb;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  min-height: 36px;
+}
+
+.search-icon {
+  width: 14px;
+  height: 14px;
+} */
+ /* SearchBar.css */
+.search-container {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  font-family: sans-serif;
+  flex-wrap: wrap;
+  padding: 16px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin-bottom: 24px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.search-input-group {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 120px;
+}
+
+.search-label {
+  margin-bottom: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+  padding-left: 4px;
+  padding-bottom: 5px;
+}
+
+.search-select {
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  font-size: 13px;
+  background-color: white;
+  cursor: pointer;
+  min-height: 36px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.search-button {
+  padding: 8px 16px;
+  border-radius: 6px;
+  background-color: #0b84cb;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  min-height: 36px;
+  min-width: 120px;
+  flex-shrink: 0;
+}
+
+.search-icon {
+  width: 14px;
+  height: 14px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .search-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .search-input-group {
+    min-width: 100%;
+  }
+  
+  .search-button {
+    align-self: flex-start;
+    margin-top: 8px;
+  }
+}

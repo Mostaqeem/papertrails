@@ -1,0 +1,17 @@
+[0522/123629.867:ERROR:registration_protocol_win.cc(108)] CreateFile: The system cannot find the file specified. (0x2)
+[0522/123630.348:ERROR:registration_protocol_win.cc(108)] CreateFile: The system cannot find the file specified. (0x2)
+INFO 2025-10-13 11:37:05,195 autoreload Watching for file changes with StatReloader
+INFO 2025-10-13 11:37:10,586 basehttp "POST /admin/accounts/user/ HTTP/1.1" 200 15300
+INFO 2025-10-13 11:37:10,855 basehttp "GET /static/admin/js/cancel.js HTTP/1.1" 200 884
+INFO 2025-10-13 11:37:13,267 basehttp "POST /admin/accounts/user/ HTTP/1.1" 302 0
+INFO 2025-10-13 11:37:13,337 basehttp "GET /admin/accounts/user/ HTTP/1.1" 200 26407
+INFO 2025-10-13 11:37:13,403 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-10-13 11:37:16,719 basehttp "GET /admin/accounts/user/add/ HTTP/1.1" 200 25690
+INFO 2025-10-13 11:37:16,772 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-10-13 11:38:03,521 basehttp "POST /admin/accounts/user/add/ HTTP/1.1" 302 0
+INFO 2025-10-13 11:38:03,587 basehttp "GET /admin/accounts/user/11/change/ HTTP/1.1" 200 37465
+INFO 2025-10-13 11:38:03,661 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-10-13 11:38:08,767 basehttp "POST /admin/accounts/user/11/change/ HTTP/1.1" 302 0
+INFO 2025-10-13 11:38:08,814 basehttp "GET /admin/accounts/user/ HTTP/1.1" 200 27213
+INFO 2025-10-13 11:38:08,877 basehttp "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-10-13 11:39:02,465 autoreload D:\Internship projects\ATS merge\paper-trails\backend\agreements\utils\email_utils.py changed, reloading.

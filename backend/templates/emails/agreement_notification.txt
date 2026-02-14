@@ -1,0 +1,18 @@
+Agreement {{ action|upper }} Notification
+
+Agreement Title: {{ agreement.title }}
+Reference: {{ agreement_reference }}
+Vendor: {{ vendor_name }}
+Department: {{ department_name }}
+
+Dates:
+- Start Date: {{ start_date|date:"M d, Y" }}
+- Expiry Date: {{ expiry_date|date:"M d, Y" }}
+- Reminder Date: {{ reminder_date|date:"M d, Y" }}
+
+
+{% if agreement.description %}
+Description: {{ agreement.description }}
+{% endif %}
+
+This is an automated notification. Please do not reply to this email.
