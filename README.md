@@ -359,7 +359,7 @@ All services are containerized and can be deployed using docker-compose:
 - Configure database backups
 - Set up proper logging and monitoring
 
-## 📞 Support & Documentation
+## Helpful Documentations for React and Django
 
 - Django Documentation: https://docs.djangoproject.com/
 - React Documentation: https://react.dev/
@@ -368,15 +368,12 @@ All services are containerized and can be deployed using docker-compose:
 
 ## 📄 License
 
-[Add your license information here]
+This was an internship project devloped and deployed by Md. Mostaqeem Billah
 
-## 👥 Contributors
-
-[Add contributor information here]
 
 ## 📅 Version History
 
-- **v0.0.0** - Initial development version
+  - Initial development version
   - Core agreement management system
   - User authentication and role-based access
   - Letter/correspondence tracking
